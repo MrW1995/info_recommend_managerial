@@ -37,7 +37,7 @@
               {value: 15, name: '衬衫'},
               {value: 20, name: '羊毛衫'},
               {value: 36, name: '雪纺衫'},
-              {value: 10, name: '高跟鞋'},
+              {value: 30, name: '高跟鞋'},
               {value: 10, name: '裤子'},
               {value: 10, name: '袜子'}
             ]
