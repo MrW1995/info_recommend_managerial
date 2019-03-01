@@ -8,7 +8,7 @@ import Mock from 'mockjs'
 import data from './data'
 
 //该条语句的作用是向外暴露了url为/querySenics数据为data.senics的模板提供
-/*Mock.mock('/querySenics/none',{code:0,data:data.senics})*/
 
+Mock.mock('userLogin/123',{code:0,data:data.userInfo})
 
 

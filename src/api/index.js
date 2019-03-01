@@ -4,4 +4,6 @@
 
 import ajax from './ajax'
 
-export const recevieScenics = (searchSort) =>ajax("/querySenics/"+searchSort)
+export const UserLogin = ({UserName,UserPwd}) =>ajax('/userLogin/'+UserName)
+
+

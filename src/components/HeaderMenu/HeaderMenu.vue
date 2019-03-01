@@ -19,11 +19,11 @@
       <div class="grid-content bg-purple headerThree">
         <table class="selectMenu">
           <tr>
-            <td :class="{changeSingleTd:changeColorNum==1}" @click="clickChangeColor(1)">用户数量</td>
-            <td :class="{changeSingleTd:changeColorNum==2}" @click="clickChangeColor(2)">已发表数</td>
-            <td :class="{changeSingleTd:changeColorNum==3}" @click="clickChangeColor(3)">信息统计</td>
-            <td :class="{changeSingleTd:changeColorNum==4}" @click="clickChangeColor(4)">用户反馈</td>
-            <td :class="{changeLogOUt:changeColorNum==5}" @click="clickChangeColor(5)">退出</td>
+            <td :class="{changeSingleTd:changeColorNum==1}" @click="clickChangeColor(1,'/homePage/userSearch')">用户数量</td>
+            <td :class="{changeSingleTd:changeColorNum==2}" @click="clickChangeColor(2,'/homePage/articleCountPage')">已发表数</td>
+            <td :class="{changeSingleTd:changeColorNum==3}" @click="clickChangeColor(3,'/homePage/infoEcharts')">信息统计</td>
+            <td :class="{changeSingleTd:changeColorNum==4}" @click="clickChangeColor(4,'/homePage/feedBack')">用户反馈</td>
+            <td :class="{changeLogOUt:changeColorNum==5}" @click="clickChangeColor(5,'')">退出</td>
           </tr>
         </table>
       </div>
@@ -41,8 +41,9 @@
       }
     },
     methods:{
-      clickChangeColor(value){
+      clickChangeColor(value,url){
         this.changeColorNum = value
+        this.$router.push(url)
       }
     }
   }
