@@ -16,8 +16,8 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .footerBar
-    margin 0
+    margin-top 23px
     .grid-content
-        min-height 42px
-        background-color red
+        min-height 45px
+        background-color #d3dce6
 </style>

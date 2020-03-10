@@ -3,6 +3,25 @@ ajax请求函数模块
 返回值: promise对象(异步返回的数据是: response.data)
  */
 import axios from 'axios'
+import state from '../store/state'
+axios.create({
+  withCredentials:true,  //跨域
+  headers:{
+    "Content-Type":"application/json"
+  }
+})
+//http request 配置
+axios.interceptors.request.use(config=> {
+    let token = window.localStorage.getItem("token")
+    if (token) {
+      config.headers.assessToken = `${token}`
+    }
+    return config
+  },
+  err =>{
+    return Promise.reject(err)
+  }
+)
 export default function ajax (url, data={}, type='GET') {
 
   return new Promise(function (resolve, reject) {
@@ -20,7 +39,6 @@ export default function ajax (url, data={}, type='GET') {
         url = url + '?' + dataStr
       }
       // 发送get请求
-      console.log(url)
       promise = axios.get(url)
     } else {
       // 发送post请求

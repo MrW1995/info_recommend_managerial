@@ -8,22 +8,20 @@
     </el-col>
     <el-col :span="6">
       <div class="grid-content bg-purple headerTwo">
-        <el-input size="small" class="inputSearch"
-          placeholder="请输入内容"
-          v-model="searchVal">
-          <i slot="prefix" class="el-input__iconn el-icon-search"></i>
-        </el-input>
+
       </div>
     </el-col>
     <el-col :span="10">
       <div class="grid-content bg-purple headerThree">
         <table class="selectMenu">
           <tr>
-            <td :class="{changeSingleTd:changeColorNum==1}" @click="clickChangeColor(1,'/homePage/userSearch')">用户数量</td>
-            <td :class="{changeSingleTd:changeColorNum==2}" @click="clickChangeColor(2,'/homePage/articleCountPage')">已发表数</td>
-            <td :class="{changeSingleTd:changeColorNum==3}" @click="clickChangeColor(3,'/homePage/infoEcharts')">信息统计</td>
+            <td :class="{changeSingleTd:changeColorNum==1}" @click="clickChangeColor(1,'/homePage/infoEcharts')">信息统计</td>
+            <td :class="{changeSingleTd:changeColorNum==2}" @click="clickChangeColor(2,'/homePage/userSearch')">用户数量</td>
+            <td :class="{changeSingleTd:changeColorNum==3}" @click="clickChangeColor(3,'/homePage/articleCountPage')">已发表数</td>
             <td :class="{changeSingleTd:changeColorNum==4}" @click="clickChangeColor(4,'/homePage/feedBack')">用户反馈</td>
-            <td :class="{changeLogOUt:changeColorNum==5}" @click="clickChangeColor(5,'')">退出</td>
+            <td :class="{changeSingleTd:changeColorNum==5}" @click="clickChangeColor(5,'/homePage/manager')">账号管理</td>
+            <td :class="{changeSingleTd:changeColorNum==6}" @click="clickChangeColor(6,'/homePage/addSort')">添加分类</td>
+            <td :class="{changeLogOUt:changeColorNum==7}" @click="clickChangeColor(7,'')">退出</td>
           </tr>
         </table>
       </div>
@@ -35,8 +33,7 @@
   export default {
     data(){
       return {
-        searchVal:'',
-        changeColorNum:0,
+        changeColorNum:1,
         NumBer:6
       }
     },
@@ -44,6 +41,13 @@
       clickChangeColor(value,url){
         this.changeColorNum = value
         this.$router.push(url)
+        if(value === 7){
+          this.userLogOut()
+        }
+      },
+      userLogOut(){
+        window.localStorage.clear()
+        this.$router.push('/')
       }
     }
   }
@@ -82,9 +86,9 @@
       .selectMenu
         color white
         font-weight bold
-        margin auto 0 auto 15%
+        margin auto 0 auto 0
         td
-          width 81px
+          width 100px
           &.changeSingleTd
             color aqua
           &.changeLogOUt

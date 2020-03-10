@@ -6,10 +6,12 @@ const InfoEcharts = () =>import('../pages/InfoEcharts/InfoEcharts')
 const UserSearch = () =>import('../pages/UserSearch/UserSearch')
 const ArticleCountPage = () =>import('../pages/ArticleCountPage/ArticleCountPage')
 const FeedBack = () =>import('../pages/FeedBack/FeedBack')
+const Manager = () =>import('../pages/Manager/Manager')
+const addSort = () =>import('../pages/addSort/addSort')
 
 Vue.use(Router)
 
-export default new Router({
+let router =  new Router({
   routes: [
     {
       path: '/',
@@ -38,12 +40,37 @@ export default new Router({
         {
           path:'/homePage/articleCountPage',
           component:ArticleCountPage
-        }, {
+        },
+        {
           path:'/homePage/feedBack',
           component:FeedBack
+        },
+        {
+          path:'/homePage/manager',
+          component:Manager
+        },
+        {
+          path:'/homePage/addSort',
+          component:addSort
         },
       ]
     }
 
   ]
 })
+
+router.beforeEach((to,from,next) =>{
+  if(to.path.startsWith("/login")){
+    window.localStorage.removeItem("token");
+    next();
+  }else{
+    let token = window.localStorage.getItem("token");
+    if(!token){
+      next("/login");
+    }else{
+      next();
+    }
+  }
+})
+
+export default router

@@ -15,6 +15,9 @@
           title: {
             text: '周发表量'
           },
+          textStyle:{
+            color: "#00FFFF"
+          },
           tooltip: {},
           series: [{
             name: '发表',
@@ -24,8 +27,9 @@
               {value: 20, name: '周二'},
               {value: 36, name: '周三'},
               {value: 30, name: '周四'},
-              {value: 2000, name: '周五'},
-              {value: 10, name: '周六'}
+              {value: 20, name: '周五'},
+              {value: 10, name: '周六'},
+              {value: 30, name: '周日'}
             ]
           }]
         }
